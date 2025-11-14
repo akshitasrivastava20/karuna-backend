@@ -2,18 +2,22 @@
   "name": "karuna-backend",
   "module": "index.ts",
   "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
-    "start": "bun api/index.ts",
+    "start": "node api/index.js",
+    "start:bun": "bun api/index.ts",
     "dev": "bun --hot api/index.ts",
-    "build": "tsc --noEmit",
+    "build": "tsc && cp -r src/templates dist/src/",
+    "postbuild": "find dist -name '*.ts' -delete",
+    "render-build": "npm install && npm run build",
     "vercel-build": "npm install"
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "@types/node": "^24.0.3"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
+    "@types/node": "^24.0.3",
+    "typescript": "^5.6.3"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.0",

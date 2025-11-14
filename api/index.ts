@@ -32,10 +32,16 @@ app.get('/chat', (req, res) => {
   res.sendFile(path.join(__dirname, 'src', 'templates', 'chat.html'));
 });
 
-const PORT = process.env.PORT || 6969;
+const PORT = parseInt(process.env.PORT || '6969', 10);
+const HOST = process.env.HOST || '0.0.0.0';
 
+// For local development or non-Vercel deployments (like Render)
 if (process.env.VERCEL !== "1") {
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  app.listen(PORT, HOST, () => {
+    console.log(`🚀 Server running on http://${HOST}:${PORT}`);
+    console.log(`📱 Environment: ${process.env.NODE_ENV || 'development'}`);
+    console.log(`🔗 Health check: http://${HOST}:${PORT}/`);
+  });
 }
 
 export default app; 
