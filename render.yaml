@@ -3,8 +3,31 @@ services:
     name: karuna-backend
     env: node
     plan: free
-    buildCommand: npm run render-build
-    startCommand: npm start
+    buildCommand: |
+      curl -fsSL https://bun.sh/install | bash
+      source ~/.bashrc
+      export PATH="$HOME/.bun/bin:$PATH"
+      bun install
+    startCommand: |
+      export PATH="$HOME/.bun/bin:$PATH"
+      bun api/index.ts
+    envVars:
+      - key: NODE_VERSION
+        value: 18
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+    healthCheckPath: /
+    autoDeploy: true
+    branch: main web
+    name: karuna-backend
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run start:node
     envVars:
       - key: NODE_VERSION
         value: 18

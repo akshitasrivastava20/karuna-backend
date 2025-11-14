@@ -6,12 +6,9 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "start": "node api/index.js",
-    "start:bun": "bun api/index.ts",
+    "start": "bun api/index.ts",
     "dev": "bun --hot api/index.ts",
-    "build": "tsc && cp -r src/templates dist/src/",
-    "postbuild": "find dist -name '*.ts' -delete",
-    "render-build": "npm install && npm run build",
+    "render-postbuild": "echo 'Build completed for Render'",
     "vercel-build": "npm install"
   },
   "devDependencies": {

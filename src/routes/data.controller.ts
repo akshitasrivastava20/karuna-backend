@@ -1,6 +1,6 @@
-import CacheService from '../services/CacheService.js';
-import Doc from '../models/Doc.js';
-import Hospital from '../models/Hospital.js';
+import CacheService from '../services/CacheService';
+import Doc from '../models/Doc';
+import Hospital from '../models/Hospital';
 import type { Request, Response } from 'express';
 
 // Fetch all doctors

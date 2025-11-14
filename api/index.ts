@@ -1,12 +1,11 @@
 import express from 'express';
 import cors from 'cors';
-import diagnosisRoutes from "../src/routes/diagnosis.route.js";
-import reportRoutes from "../src/routes/report.route.js";
-import chatRouters from "../src/routes/chat.route.js";
-import drugRoutes from "../src/routes/medicine.route.js";
-import dataRoutes from "../src/routes/data.route.js";
-
-import simpleCacheRoutes from "../src/routes/simpleCache.route.js";
+import diagnosisRoutes from "../src/routes/diagnosis.route";
+import reportRoutes from "../src/routes/report.route";
+import chatRouters from "../src/routes/chat.route";
+import drugRoutes from "../src/routes/medicine.route";
+import dataRoutes from "../src/routes/data.route";
+import simpleCacheRoutes from "../src/routes/simpleCache.route";
 import path from 'path';
 
 const __dirname = path.resolve();
@@ -32,7 +31,7 @@ app.get('/chat', (req, res) => {
   res.sendFile(path.join(__dirname, 'src', 'templates', 'chat.html'));
 });
 
-const PORT = parseInt(process.env.PORT || '3000', 10);
+const PORT = parseInt(process.env.PORT || '6969', 10);
 
 // For local development or non-Vercel deployments (like Render)
 if (process.env.VERCEL !== "1") {
