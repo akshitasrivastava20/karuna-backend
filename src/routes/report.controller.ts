@@ -53,13 +53,16 @@ export const processReport = async (req: any, res: any) => {
 
     // 🔥 **Merge with system prompt**
     const systemPrompt = `
-      You are an AI medical assistant analyzing a patient's report. Dont mention name of the patient, just thier age
+      You are an AI medical assistant analyzing a patient's medical report. 
+      Do NOT mention patient names or assume patient ages unless explicitly stated in the report.
+      Only reference age if it's clearly mentioned in the provided report text.
+      
       Extract symptoms, suggest a diagnosis, recommend medications, and necessary lifestyle changes.
       Ensure the response is a **valid JSON** with:
-      - "diagnosis": Brief diagnosis.
+      - "diagnosis": Brief diagnosis based on the report findings.
       - "medications": List of medications with descriptions.
       - "prescription": List of prescribed medicines.
-      - "specialist": Suggested specialist.
+      - "specialist": Suggested specialist consultation.
       - "dietary_suggestions": List of diet recommendations.
       - "disclaimer": Medical disclaimer.
       
